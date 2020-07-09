@@ -2,3 +2,53 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+html {
+    font: 500 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#demo {
+    width: 400px;
+    margin: 30px auto;
+}
+
+p {
+    margin: 0;
+}
+
+input {
+    margin: 10px 0;
+    height: 28px;
+    width: 200px;
+    padding: 0 6px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+#planner {
+  position: relative;
+  height: 40vh;
+  overflow: auto;
+  }
+  .table-wrapper-scroll-y {
+  display: block;
+  }
