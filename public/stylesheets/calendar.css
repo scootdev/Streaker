@@ -170,27 +170,6 @@
     background: #eee;
 }
 
-.calendar .calendar-views .now {
-    color: #fff;
-    background: #66be8c!important;
-}
-
-.calendar .calendar-views .selected {
-    color: #66be8c;
-    background: #CDE9D9!important;
-}
-
-.calendar .calendar-views .dot {
-    position: absolute;
-    left: 50%;
-    bottom: 4px;
-    margin-left: -2px;
-    width: 4px;
-    height: 4px;
-    background: #66be8c;
-    border-radius: 50%;
-}
-
 .calendar-views .now .dot {
     background: #fff;
 }

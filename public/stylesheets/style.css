@@ -46,9 +46,12 @@ input {
 
 #planner {
   position: relative;
-  height: 40vh;
+  height: 43vh;
   overflow: auto;
-  }
-  .table-wrapper-scroll-y {
+}
+
+.table-wrapper-scroll-y {
   display: block;
-  }
+}
+
+
