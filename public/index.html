@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/purpleLight.css">
     <link rel="stylesheet" href="stylesheets/calendar.css">
-    <link rel="stylesheet" href="stylesheets/style.css">
     <title>Planner App</title>
 
 </head>
@@ -22,99 +23,99 @@
                 <div class="row">
                     <div id="planner" class="table-wrapper-scroll-y w-100">
                         <table class="table">
-                            <tr>
+                            <tr id="hour-1">
                                 <th class="text-center border-right" scope="row">1:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-2">
                                 <th class="text-center border-right" scope="row">2:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-3">
                                 <th class="text-center border-right" scope="row">3:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-4">
                                 <th class="text-center border-right" scope="row">4:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-5">
                                 <th class="text-center border-right" scope="row">5:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-6">
                                 <th class="text-center border-right" scope="row">6:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-7">
                                 <th class="text-center border-right" scope="row">7:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-8">
                                 <th class="text-center border-right" scope="row">8:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-9">
                                 <th class="text-center border-right" scope="row">9:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-10">
                                 <th class="text-center border-right" scope="row">10:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-11">
                                 <th class="text-center border-right" scope="row">11:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-12">
                                 <th class="text-center border-right" scope="row">12:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-13">
                                 <th class="text-center border-right" scope="row">1:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-14">
                                 <th class="text-center border-right" scope="row">2:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-15">
                                 <th class="text-center border-right" scope="row">3:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-16">
                                 <th class="text-center border-right" scope="row">4:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-17">
                                 <th class="text-center border-right" scope="row">5:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-18">
                                 <th class="text-center border-right" scope="row">6:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-19">
                                 <th class="text-center border-right" scope="row">7:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-20">
                                 <th class="text-center border-right" scope="row">8:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-21">
                                 <th class="text-center border-right" scope="row">9:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-22">
                                 <th class="text-center border-right" scope="row">10:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-23">
                                 <th class="text-center border-right" scope="row">11:00</th>
                                 <td class="w-75"></td>
                             </tr>
-                            <tr>
+                            <tr id="hour-24">
                                 <th class="text-center border-right" scope="row">12:00</th>
                                 <td class="w-75"></td>
                             </tr>
@@ -123,9 +124,9 @@
                 </div>
                 <div class="row fixed-bottom">
                     <div class="btn-group w-100" role="group">
-                            <button class="btn btn-dark py-3">Goals</button>
-                            <button class="btn btn-dark py-3">Planner</button>
-                            <button class="btn btn-dark py-3">To-Do</button>
+                        <button class="btn menu-btn py-3">Goals</button>
+                        <button class="btn menu-btn py-3">Planner</button>
+                        <button class="btn menu-btn py-3">To-Do</button>
                     </div>
                 </div>
             </div>
@@ -141,6 +142,7 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
     <script src="js/calendar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="js/index.js"></script>
 </body>
 
