@@ -1,0 +1,15 @@
+/* .row {
+    border-style: solid;
+} */
+
+body {
+    background-image: url(../assets/purpfadebg.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+   }
+
+   .li {
+       border-style: solid;
+   }
