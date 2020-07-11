@@ -29,7 +29,7 @@ $(document).ready(() => {
       password: password
     })
       .then(data => {
-        window.location.replace("/members");
+        window.location.replace("/calendar");
         console.log(data);
         // If there's an error, handle it by throwing up a bootstrap alert
       })
