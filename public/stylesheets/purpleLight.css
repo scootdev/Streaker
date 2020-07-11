@@ -1,0 +1,33 @@
+.time-past {
+    background-color: lightgray;
+}
+
+.time-present {
+    background-color: #D9B5FF;
+}
+
+.calendar .calendar-views .now {
+    color: #fff;
+    background: #7C49B3!important;
+}
+
+.calendar .calendar-views .selected {
+    color: #7C49B3;
+    background: #D9B5FF!important;
+}
+
+.calendar .calendar-views .dot {
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+    margin-left: -2px;
+    width: 4px;
+    height: 4px;
+    background: #7C49B3;
+    border-radius: 50%;
+}
+
+.menu-btn {
+    color: #fff;
+    background-color: #A388BF;
+}
