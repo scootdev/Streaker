@@ -1,25 +1,14 @@
+// eslint-disable-next-line no-unused-vars
 const context = { quote: "new" };
 
 $(document).ready(() => {
-  console.log(Object.keys(jQuery)); // Loading the object with keys
-  jQuery.get(
+  // console.log(Object.keys(jQuery));
+  $.get(
     "https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en",
     data => {
-      console.log(data);
-      $(".result").html(data);
+      console.log(data.quoteText);
+      $("#quote").text(data.quoteText);
       alert("Load was performed.");
     }
   );
 });
-
-// $.ajax({
-//   type: "GET",
-//   url: "https://cors-anywhere.herokuapp.com/http://forismatic.com/en/api/",
-//   dataType: "jsonp",
-//   headers: {
-//     "x-requested-with": "xhr"
-//   },
-//   success: function(result) {
-//     console.log(result);
-//   }
-// });
