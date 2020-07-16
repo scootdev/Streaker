@@ -41,3 +41,29 @@ $(document).ready(() => {
     $("#alert").fadeIn(500);
   }
 });
+
+// Quote API
+const context = { quote: "new" };
+$(document).ready(() => {
+  // console.log(Object.keys(jQuery)); // Loading the object with keys
+  jQuery.get(
+    "https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en",
+    data => {
+      console.log(data);
+      $(".result").html(JSON.stringify(data.quoteText));
+    }
+  );
+});
+
+// $.ajax({
+//   type: "GET",
+//   url: "https://cors-anywhere.herokuapp.com/http://forismatic.com/en/api/",
+//   dataType: "jsonp",
+//   headers: {
+//     "x-requested-with": "xhr"
+//   },
+//   success: function(result) {
+//     console.log(result);
+//   }
+// });
+

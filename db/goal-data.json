@@ -1,0 +1,11 @@
+{
+    "goals": [
+        {
+            "theGoal": "finish project",
+            "startDate": "20/07/08",
+            "endDate": "20/07/19",
+            "color": "red",
+            "userId": "1"
+        }
+    ]
+}
