@@ -3,55 +3,19 @@ form.login {
   margin-top: 50px;
 }
 
-html {
-    font: 500 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
-    height: 100%;
-}
-
 body {
-    height: 100%;
-    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: rgb(192,132,215);
+    background: linear-gradient(153deg, rgba(192,132,215,1) 0%, rgba(174,125,212,1) 35%, rgba(160,239,255,1) 100%);
 }
 
-a {
-    text-decoration: none;
+#title {
+    font-family: 'Pacifico', cursive;
+    color: rgb(192,132,215);
 }
 
-ul,
-ol,
-li {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+#logoutBtn {
+    font-family: 'Pacifico', cursive;
+    font-size: larger;
+    color: rgb(192,132,215);
 }
-
-#demo {
-    width: 400px;
-    margin: 30px auto;
-}
-
-p {
-    margin: 0;
-}
-
-input {
-    margin: 10px 0;
-    height: 28px;
-    width: 200px;
-    padding: 0 6px;
-    border: 1px solid #ccc;
-    outline: none;
-}
-
-#planner {
-  position: relative;
-  height: 43vh;
-  overflow: auto;
-}
-
-.table-wrapper-scroll-y {
-  display: block;
-}
-
-

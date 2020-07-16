@@ -1,5 +1,3 @@
-$(document).ready(function() {
-  $('#calendar').evoCalendar({
+$('#calendar').evoCalendar({
       settingName: settingValue
-  })
-})
+  });
