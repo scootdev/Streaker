@@ -1,3 +1,3 @@
-$('#calendar').evoCalendar({
-      settingName: settingValue
-  });
+$("#calendar").evoCalendar({
+  settingName: settingValue
+});
