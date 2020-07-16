@@ -11,4 +11,4 @@ $(document).ready(() => {
       alert("Load was performed.");
     }
   );
-});
+}); // Test
