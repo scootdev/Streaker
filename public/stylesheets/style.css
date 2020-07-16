@@ -7,6 +7,10 @@ body {
     font-family: 'Roboto', sans-serif;
     background: rgb(192,132,215);
     background: linear-gradient(153deg, rgba(192,132,215,1) 0%, rgba(174,125,212,1) 35%, rgba(160,239,255,1) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 
 #title {
