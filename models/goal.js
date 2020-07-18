@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     {
       goalDes: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       startDate: {
         type: DataTypes.DATEONLY,

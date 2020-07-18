@@ -3,7 +3,6 @@ const passport = require("../config/passport");
 const router = express.Router();
 const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
-const { query } = require("express");
 
 // GET login or calendar if logged in
 router.get("/", (req, res) => {
@@ -73,7 +72,11 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-// GET user_data
+// router.get("/api/goals/:userid/:date", (req, res) => {
+//   const id = req.params.userid;
+//   const date = req.params.date;
+// });
+
 router.get("/api/user_data", (req, res) => {
   if (!req.user) {
     res.json({});
@@ -85,9 +88,6 @@ router.get("/api/user_data", (req, res) => {
   }
 });
 
-
-
-
 // GET goals
 router.get("/api/goals", (req, res) => {
   if (!req.user) {
@@ -95,12 +95,11 @@ router.get("/api/goals", (req, res) => {
   } else {
     db.Goals.findAll({
       include: [db.User]
-    }).then(function (dbGoals) {
+    }).then(dbGoals => {
       res.json(dbGoals);
     });
   }
 });
-
 
 // POST goals
 router.post("/api/goals", isAuthenticated, (req, res) => {
@@ -116,7 +115,7 @@ router.get("/api/days_completed", (req, res) => {
   } else {
     db.Days.findAll({
       include: [db.Goals]
-    }).then(function (dbDays) {
+    }).then(dbDays => {
       res.json(dbDays);
     });
   }
@@ -128,6 +127,5 @@ router.post("/api/days_completed", isAuthenticated, (req, res) => {
     res.json(data);
   });
 });
-
 
 module.exports = router;
