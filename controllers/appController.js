@@ -65,6 +65,12 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
+router.get("/api/goals/:userid/:date", (req, res) => {
+  const id = req.params.userid;
+  const date = req.params.date;
+  
+})
+
 router.get("/api/user_data", (req, res) => {
   if (!req.user) {
     // The user is not logged in, send back an empty object
