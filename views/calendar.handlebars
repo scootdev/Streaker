@@ -11,12 +11,12 @@
         </div>
         <div class="col-12 col-lg-4" style="background: white">
             <div id="rightCol">
-            {{#if goals}}
-            {{> utilities/goals-block }}
-            {{/if}}
-            {{#if add}}
-            {{> utilities/add-block }}
-            {{/if}}
+                {{#if goals}}
+                {{> utilities/goals-block }}
+                {{/if}}
+                {{#if add}}
+                {{> utilities/add-block }}
+                {{/if}}
             </div>
         </div>
         <div id="short-term-goal-container" class="short-term-goal">
@@ -37,6 +37,7 @@
         <!-- Add the evo-calendar.js for.. obviously, functionality! -->
         <script src="https://cdn.jsdelivr.net/npm/evo-calendar@1.1.0/evo-calendar/js/evo-calendar.min.js"></script>
         <script src="js/index.js"></script>
+        <script src="js/goalsBlock.js"></script>
 
         <script>
             // initialize your calendar, once the page's DOM is ready

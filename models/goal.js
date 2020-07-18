@@ -1,19 +1,18 @@
 // Creating our Goal model
 module.exports = function(sequelize, DataTypes) {
-  const Goal = sequelize.define(
-    "Goal",
+  const Goals = sequelize.define(
+    "Goals",
     {
       goalDes: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
+        allowNull: false
       },
       startDate: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: true
       },
       endDate: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: true
       },
       color: {
@@ -26,12 +25,12 @@ module.exports = function(sequelize, DataTypes) {
     }
   );
 
-  Goal.associate = function(models) {
-    Goal.belongsTo(models.User, {
+  Goals.associate = function(models) {
+    Goals.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }
     });
   };
-  return Goal;
+  return Goals;
 };
