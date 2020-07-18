@@ -87,13 +87,7 @@ router.get("/api/goals", (req, res) => {
 
 // POST goals
 router.post("/api/goals", isAuthenticated, (req, res) => {
-  db.Goals.create({
-    UserId: req.user.id,
-    goalDes: req.body.goalDes,
-    startDate: req.body.startDate,
-    endDate: req.body.endDate,
-    color: req.body.color
-  }).then(data => {
+  db.Goals.create(req.body).then(data => {
     res.json(data);
   });
 });
@@ -113,11 +107,7 @@ router.get("/api/days_completed", (req, res) => {
 
 // POST days completed
 router.post("/api/days_completed", isAuthenticated, (req, res) => {
-  db.Days.create({
-    GoalId: req.body.id,
-    goalDes: req.body.goalDes,
-    dateCompleted: req.body.dateCompleted
-  }).then(data => {
+  db.Days.create(req.body).then(data => {
     res.json(data);
   });
 });

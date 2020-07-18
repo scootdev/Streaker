@@ -34,6 +34,6 @@ $(document).ready(() => {
 
     $(":checkbox").click(countChecked);
 
-
+    
 
 });
