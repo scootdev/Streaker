@@ -1,7 +1,8 @@
 <nav class="navbar navbar-light bg-light mb-5 shadow">
     <h1 class="pl-5" id="title">Streaker</h1>
     <div id="quote"></div>
-    <button id="logoutBtn" class="btn">Log Out<i class="pl-1 fas fa-sign-out-alt fa-1x"></i></button>
+    <a href="/logout"><button id="logoutBtn" class="btn">Log Out<i
+                class="pl-1 fas fa-sign-out-alt fa-1x"></i></button></a>
 </nav>
 <div class="container">
     <div class="row no-gutters shadow p-3 mb-5 bg-white rounded">
@@ -10,12 +11,12 @@
         </div>
         <div class="col-12 col-lg-4" style="background: white">
             <div id="rightCol">
-            {{#if goals}}
-            {{> utilities/goals-block }}
-            {{/if}}
-            {{#if add}}
-            {{> utilities/add-block }}
-            {{/if}}
+                {{#if goals}}
+                {{> utilities/goals-block }}
+                {{/if}}
+                {{#if add}}
+                {{> utilities/add-block }}
+                {{/if}}
             </div>
         </div>
     </div>
