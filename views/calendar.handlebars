@@ -1,16 +1,14 @@
-<nav class="navbar navbar-light bg-light mb-3">
+<nav class="navbar navbar-light bg-light mb-5 shadow">
     <h1 class="pl-5" id="title">Streaker</h1>
     <div id="quote"></div>
     <button id="logoutBtn" class="btn">Log Out<i class="pl-1 fas fa-sign-out-alt fa-1x"></i></button>
 </nav>
 <div class="container">
     <div class="row no-gutters shadow p-3 mb-5 bg-white rounded">
-        <div class="col-12 col-sm-8">
+        <div class="col-12 col-lg-8">
             <div id="calendar"></div>
         </div>
-        <div class="col-12 col-sm-4" style="background: white">
-            <a href="/calendar">goals</a>
-            <a href="/addgoal">add</a>
+        <div class="col-12 col-lg-4" style="background: white">
             <div id="rightCol">
             {{#if goals}}
             {{> utilities/goals-block }}
