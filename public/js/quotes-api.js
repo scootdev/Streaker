@@ -12,8 +12,7 @@ function getQuote() {
     data => {
       if (data.quoteText.length < 128) {
         $("#quote").text(data.quoteText);
-      }
-      else {
+      } else {
         getQuote();
       }
     }

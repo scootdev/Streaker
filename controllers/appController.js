@@ -19,11 +19,11 @@ router.get("/signup", (req, res) => {
 });
 
 router.get("/calendar", isAuthenticated, (req, res) => {
-    res.render("calendar", {goals: true});
+  res.render("calendar", { goals: true });
 });
 
 router.get("/addgoal", isAuthenticated, (req, res) => {
-    res.render("calendar", {add: true});
+  res.render("calendar", { add: true });
 });
 
 router.post("/api/login", passport.authenticate("local"), (req, res) => {
@@ -41,6 +41,23 @@ router.post("/api/signup", (req, res) => {
     .catch(err => {
       res.status(401).json(err);
     });
+});
+
+router.post("/api/short-term-goal", (req, res) => {
+  // db.User.create({
+  //   email: req.body.email,
+  //   password: req.body.password
+  // })
+  //   .then(() => {
+  //     res.redirect(307, "/api/login");
+  //   })
+  //   .catch(err => {
+  //     res.status(401).json(err);
+  //   });
+  res.json({}); // Network request piece
+  console.log("Short-Term-Goal end point called");
+  console.log(req);
+  // console.log(JSON.stringify(req));
 });
 
 router.get("/logout", (req, res) => {

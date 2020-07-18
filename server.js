@@ -1,4 +1,8 @@
 require("dotenv").config();
+// const hbs = require("hbs");
+// const fs = require("fs");
+
+// const partialsDir = __dirname + "/../partials";
 
 // Requiring necessary npm packages
 const express = require("express");
@@ -25,7 +29,10 @@ app.use(passport.session());
 
 // Handle-bar Middleware ----------------
 const exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine(
+  "handlebars",
+  exphbs({ defaultLayout: "main", partialsDir: __dirname + "/views/partials/" })
+);
 app.set("view engine", "handlebars");
 
 const routes = require("./controllers/appController");

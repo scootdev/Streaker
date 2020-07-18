@@ -38,3 +38,9 @@ h2 {
     font-family: 'Pacifico', cursive;
     color: rgb(192,132,215);
 }
+
+.center {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
