@@ -3,6 +3,10 @@ const context = { quote: "new" };
 
 $(document).ready(() => {
   // console.log(Object.keys(jQuery));
+  getQuote();
+}); // Test
+
+function getQuote() {
   $.get(
     "https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en",
     data => {
@@ -13,4 +17,4 @@ $(document).ready(() => {
       }
     }
   );
-}); // Test
+}
