@@ -19,7 +19,11 @@ router.get("/signup", (req, res) => {
 });
 
 router.get("/calendar", isAuthenticated, (req, res) => {
-  res.render("calendar");
+  res.render("calendar", { goals: true });
+});
+
+router.get("/addgoal", isAuthenticated, (req, res) => {
+  res.render("calendar", { add: true });
 });
 
 router.post("/api/login", passport.authenticate("local"), (req, res) => {
