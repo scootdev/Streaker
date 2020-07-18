@@ -19,59 +19,57 @@
             {{/if}}
             </div>
         </div>
-    </div>
-</div>
-<div id="short-term-goal-container" class="short-term-goal">
-    <div>
-        {{> add-goals }}
-    </div>
+        <div id="short-term-goal-container" class="short-term-goal">
+            <div>
+                {{> add-goals }}
+            </div>
 
-</div>
-<!-- Add jQuery library (required) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-    crossorigin="anonymous"></script>
+        </div>
+        <!-- Add jQuery library (required) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
 
-<!-- Add the evo-calendar.js for.. obviously, functionality! -->
-<script src="https://cdn.jsdelivr.net/npm/evo-calendar@1.1.0/evo-calendar/js/evo-calendar.min.js"></script>
-<script src="js/index.js"></script>
+        <!-- Add the evo-calendar.js for.. obviously, functionality! -->
+        <script src="https://cdn.jsdelivr.net/npm/evo-calendar@1.1.0/evo-calendar/js/evo-calendar.min.js"></script>
+        <script src="js/index.js"></script>
 
-<script>
-    // initialize your calendar, once the page's DOM is ready
-    $("#calendar").evoCalendar({
-        'eventDisplayDefault': false,
-        'todayHighlight': true,
-        'eventListToggler': false,
-        'sidebarDisplayDefault': false
-    });
-    let startDate = null;
-    let endDate = null;
+        <script>
+            // initialize your calendar, once the page's DOM is ready
+            $("#calendar").evoCalendar({
+                'eventDisplayDefault': false,
+                'todayHighlight': true,
+                'eventListToggler': false,
+                'sidebarDisplayDefault': false
+            });
+            let startDate = null;
+            let endDate = null;
 
-    $("#calendar").on("selectDate", function (triggeringEvent, newDate, oldDate) {
-        newDate = new Date(newDate);
-        if ((startDate != null && newDate.getTime() === startDate.getTime()) || (endDate != null && newDate.getTime() === endDate.getTime())) {
-            return;
-        }
-        if (startDate === null) {
-            startDate = newDate;
-        } else if (startDate != null && endDate != null && newDate.getTime() > startDate.getTime()) {
-            endDate = newDate;
-        } else if (startDate != null && endDate != null && newDate.getTime() < startDate.getTime()) {
-            endDate = startDate;
-            startDate = newDate;
-        }
-        else if (newDate.getTime() > startDate.getTime()) {
-            endDate = newDate;
-        } else {
-            endDate = startDate;
-            startDate = newDate;
+            $("#calendar").on("selectDate", function (triggeringEvent, newDate, oldDate) {
+                newDate = new Date(newDate);
+                if ((startDate != null && newDate.getTime() === startDate.getTime()) || (endDate != null && newDate.getTime() === endDate.getTime())) {
+                    return;
+                }
+                if (startDate === null) {
+                    startDate = newDate;
+                } else if (startDate != null && endDate != null && newDate.getTime() > startDate.getTime()) {
+                    endDate = newDate;
+                } else if (startDate != null && endDate != null && newDate.getTime() < startDate.getTime()) {
+                    endDate = startDate;
+                    startDate = newDate;
+                }
+                else if (newDate.getTime() > startDate.getTime()) {
+                    endDate = newDate;
+                } else {
+                    endDate = startDate;
+                    startDate = newDate;
 
-        }
-    });
-</script>
-<script src="js/quotes-api.js"></script>
-<script src="js/short-term-goal.js"></script>
+                }
+            });
+        </script>
+        <script src="js/quotes-api.js"></script>
+        <script src="js/short-term-goal.js"></script>
