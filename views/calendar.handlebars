@@ -11,7 +11,7 @@
         <div class="col-12 col-sm-4" style="background: white">
             <div class="row">
                 <div class="col" style="height: 50%">
-                    <h1>Todays Date</h1>
+                    <h1>Today's Date</h1>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><input type="checkbox" /> This is a daily goal </li>
                         <li class="list-group-item"><input type="checkbox" /> This is a daily goal </li>
@@ -19,6 +19,12 @@
                         <li class="list-group-item"><input type="checkbox" /> This is a daily goal </li>
                     </ul>
                 </div>
+            </div>
+            <div>
+                <button id="add-goal-button">
+                    Short-Term Goal
+                </button>
+
             </div>
             <div class="row">
                 <div class="col">
@@ -51,7 +57,12 @@
         </div>
     </div>
 </div>
+<div id="short-term-goal-container" class="short-term-goal">
+    <div>
+        {{> add-goals }}
+    </div>
 
+</div>
 <!-- Add jQuery library (required) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -72,5 +83,30 @@
         'eventListToggler': false,
         'sidebarDisplayDefault': false
     });
+    let startDate = null;
+    let endDate = null;
+
+    $("#calendar").on("selectDate", function (triggeringEvent, newDate, oldDate) {
+        newDate = new Date(newDate);
+        if ((startDate != null && newDate.getTime() === startDate.getTime()) || (endDate != null && newDate.getTime() === endDate.getTime())) {
+            return;
+        }
+        if (startDate === null) {
+            startDate = newDate;
+        } else if (startDate != null && endDate != null && newDate.getTime() > startDate.getTime()) {
+            endDate = newDate;
+        } else if (startDate != null && endDate != null && newDate.getTime() < startDate.getTime()) {
+            endDate = startDate;
+            startDate = newDate;
+        }
+        else if (newDate.getTime() > startDate.getTime()) {
+            endDate = newDate;
+        } else {
+            endDate = startDate;
+            startDate = newDate;
+
+        }
+    });
 </script>
 <script src="js/quotes-api.js"></script>
+<script src="js/short-term-goal.js"></script>
