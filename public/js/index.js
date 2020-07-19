@@ -48,7 +48,7 @@ function renderGoals(date) {
       checked = "";
     }
     const item = $(
-      `<li class="list-group-item"><input class="check" type="checkbox" data-id="${goal.id}" ${checked} /> ${goal.name} <button class="float-right btn delete-goal" data-id="${goal.id}" data-name="${goal.name}">Delete</button></li>`
+      `<li class="list-group-item"><input class="check" type="checkbox" data-id="${goal.id}" ${checked} /> ${goal.name} <button class="float-right btn delete-goal" data-id="${goal.id}" data-name="${goal.name}"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button></li>`
     );
     $("#goal-list").append(item);
   }

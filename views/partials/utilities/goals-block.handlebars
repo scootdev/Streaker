@@ -1,24 +1,28 @@
-<a class="float-right" href="/addgoal"><i class="fas fa-plus-square fa-2x"></i></a>
+<div class="row">
+    <div class="col text-center">
+        <a class="float-right" href="/addgoal"><i class="fas fa-plus-square fa-2x"></i></a>
+        <h1 id="selected-date">Todays Date</h1>
+    </div>
+</div>
+
 <div class="row">
     <div class="col" style="height: 50%">
-        <h1 id="selected-date">Todays Date</h1>
         <ul id="goal-list" class="list-group list-group-flush">
-            <li class="list-group-item"><input type="checkbox" class="goal-one" id="1"/> This is a daily goal</li>
-            <li class="list-group-item"><input type="checkbox" /> This is a daily goal </li>
-            <li class="list-group-item"><input type="checkbox" /> This is a daily goal </li>
-            <li class="list-group-item"><input type="checkbox" /> This is a daily goal </li>
         </ul>
     </div>
 </div>
+
+<br>
+
 <div class="row">
     <div class="col">
-        <h1>Your Progress</h1>
+        <h1 class="text-center">Progress:</h1>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 Goal 1:
                 <div class="progress">
-                    <div id="dynamic" class="progress-bar bg-success" role="progressbar" style="width: 0" aria-valuenow="0"
-                        aria-valuemin="0" aria-valuemax="100"></div>
+                    <div id="dynamic" class="progress-bar bg-success" role="progressbar" style="width: 0"
+                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </li>
             <li class="list-group-item">

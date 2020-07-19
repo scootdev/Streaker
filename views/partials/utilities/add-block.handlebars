@@ -1,44 +1,38 @@
 <a class="float-right" href="/calendar"><i class="fas fa-backspace fa-2x"></i></a>
 <div class="container">
     <div class="col text-center">
-        <h1>
-            Create Goal:
-        </h1>
+        <h1>Create Goal:</h1>
+        <br>
         <form>
             <div class="form-group pl-1">
-                <label for="description">Goal Description :</label>
+                <h4><label for="description">Goal Description:</label></h4>
                 <input type="text" class="form-control" id="description" aria-describedby="emailHelp"
                     placeholder="Enter Goal Description">
             </div>
 
         </form>
 
-        <br>
         <hr><br>
 
         <div class="form-check">
             <input class="form-check-input" type="radio" name="exampleRadios" id="longTerm" value="option1" checked>
-            <label class="form-check-label" for="longTerm">
-                Long-Term Goal
-            </label>
+            <label class="form-check-label" for="longTerm"><h5>Long-Term Goal</h5></label>
         </div>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="exampleRadios" id="shortTerm" value="option2">
-            <label class="form-check-label" for="shortTerm">
+            {{!-- <label class="form-check-label" for="shortTerm">
                 Short-Term Goal
-            </label>
+            </label> --}}
+            <label class="form-check-label" for="shortTerm"><h5>Short-Term Goal</h5></label>
             <input type="date" id="end-date" name="end-date" disabled>
         </div>
 
-        <br>
-        <hr><br>
+        <hr>
 
         <div>
-            <h3>
+            <h4>
                 Pick a color:
-            </h3>
-
-
+            </h4>
             <div class="row">
                 <div class="col">
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -71,7 +65,6 @@
             </div>
         </div>
 
-        <br>
         <hr><br>
 
         <a href="/calendar">
