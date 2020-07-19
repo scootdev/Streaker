@@ -7,16 +7,20 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false
       },
-      startDate: {
-        type: DataTypes.DATEONLY,
+      date: {
+        type: DataTypes.STRING,
         allowNull: true
       },
-      endDate: {
-        type: DataTypes.DATEONLY,
-        allowNull: true
+      longterm: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
       },
       color: {
         type: DataTypes.STRING,
+        allowNull: false
+      },
+      completed: {
+        type: DataTypes.BOOLEAN,
         allowNull: false
       }
     },
