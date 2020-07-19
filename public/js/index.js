@@ -75,6 +75,7 @@ function updateGoals() {
 }
 
 $("#goal-submit").on("click", () => {
+
   if ($("#longTerm").prop("checked")) {
     const longTerm = true;
     const selectedDate = null;
