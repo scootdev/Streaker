@@ -72,10 +72,19 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-// router.get("/api/goals/:userid/:date", (req, res) => {
-//   const id = req.params.userid;
-//   const date = req.params.date;
-// });
+router.get("/api/goals/:id", (req, res) => {
+  if (!req.user) {
+    res.json({});
+  } else {
+    db.Goals.findAll({
+      where: {
+        UserID: req.params.id
+      }
+    }).then(dbGoals => {
+      res.json(dbGoals);
+    });
+  }
+});
 
 router.get("/api/user_data", (req, res) => {
   if (!req.user) {
