@@ -1,6 +1,5 @@
 let userid = 0;
 const userGoals = [];
-let shortTermGoals;
 
 $("#calendar").evoCalendar({
   eventDisplayDefault: false,
@@ -30,7 +29,7 @@ $.get("/api/user_data").then(data => {
 });
 
 function renderGoals(date) {
-  let goalList = [];
+  const goalList = [];
   $("#goal-list").html("");
   for (let i = 0; i < userGoals.length; i++) {
     const goal = userGoals[i];
@@ -52,14 +51,18 @@ function renderGoals(date) {
     );
     $("#goal-list").append(item);
   }
-  $(".delete-goal").unbind().on("click", function (e) {
-    e.stopPropagation()
-    const name = $(this).data("name");
-    $.ajax({
-      url: `/api/goals/${name}/${userid}`,
-      method: "DELETE"
-    }).then(location.reload());
-  })
+
+  $(".delete-goal")
+    .unbind()
+    .on("click", function(e) {
+      e.stopPropagation();
+      const name = $(this).data("name");
+      $.ajax({
+        url: `/api/goals/${name}/${userid}`,
+        method: "DELETE"
+      }).then(location.reload());
+    });
+
 }
 
 function updateGoals() {
@@ -113,15 +116,19 @@ $("#goal-submit").on("click", () => {
   }
 });
 
-const getDates = function (startDate, endDate) {
-  startDate = (`${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}`);
-  endDate = (`${endDate.getMonth() + 1}/${endDate.getDate() + 1}/${endDate.getFullYear()}`);
-  let dates = [],
+
+const getDates = function(startDate, endDate) {
+  startDate = `${startDate.getMonth() +
+    1}/${startDate.getDate()}/${startDate.getFullYear()}`;
+  endDate = `${endDate.getMonth() + 1}/${endDate.getDate() +
+    1}/${endDate.getFullYear()}`;
+  const dates = [],
     currentDate = startDate,
-    addDays = function (days) {
+    addDays = function(days) {
       let date = new Date(this.valueOf());
       date.setDate(date.getDate() + days);
-      date = (`${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`);
+      date = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+
       return date;
     };
   while (currentDate <= endDate) {
@@ -165,7 +172,7 @@ $(document).on("click", ".check", function () {
   $.ajax({
     url: `/api/goals/${id}/${bool}`,
     method: "PUT"
-  })
+  });
 });
 
 // function getShortTerm() {

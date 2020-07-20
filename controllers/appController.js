@@ -152,13 +152,14 @@ router.post("/api/days_completed", isAuthenticated, (req, res) => {
   });
 });
 
-router.put("/api/goals/:id/:bool", (req, res) => {
+router.put("/api/goals/:id/:bool", req => {
   db.Goals.update(
-    {completed: req.params.bool},
+    { completed: req.params.bool },
     {
       where: {
         id: req.params.id
       }
-    });
-  });
+    }
+  );
+});
 module.exports = router;
