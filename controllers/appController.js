@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   res.render("login");
 });
 
-// GET singup or calendar if logged in
+// GET signup or calendar if logged in
 router.get("/signup", (req, res) => {
   if (req.user) {
     res.render("calendar");
@@ -47,24 +47,6 @@ router.post("/api/signup", (req, res) => {
     .catch(err => {
       res.status(401).json(err);
     });
-});
-
-// GET logout
-router.post("/api/short-term-goal", (req, res) => {
-  // db.User.create({
-  //   email: req.body.email,
-  //   password: req.body.password
-  // })
-  //   .then(() => {
-  //     res.redirect(307, "/api/login");
-  //   })
-  //   .catch(err => {
-  //     res.status(401).json(err);
-  //   });
-  res.json({}); // Network request piece
-  console.log("Short-Term-Goal end point called");
-  console.log(req);
-  // console.log(JSON.stringify(req));
 });
 
 router.get("/logout", (req, res) => {
@@ -162,26 +144,6 @@ router.delete("/api/goals/:name/:userid", (req, res) => {
   }
 });
 
-// GET days completed
-router.get("/api/days_completed", (req, res) => {
-  if (!req.user) {
-    res.json({});
-  } else {
-    db.Days.findAll({
-      include: [db.Goals]
-    }).then(dbDays => {
-      res.json(dbDays);
-    });
-  }
-});
-
-// POST days completed
-router.post("/api/days_completed", isAuthenticated, (req, res) => {
-  db.Days.create(req.body).then(data => {
-    res.json(data);
-  });
-});
-
 router.put("/api/goals/:id/:bool", req => {
   db.Goals.update(
     { completed: req.params.bool },
@@ -192,4 +154,5 @@ router.put("/api/goals/:id/:bool", req => {
     }
   );
 });
+
 module.exports = router;
