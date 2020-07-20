@@ -86,6 +86,36 @@ router.get("/api/goals/:id", (req, res) => {
   }
 });
 
+router.get("/api/goals/:id/shortterm", (req, res) => {
+  if (!req.user) {
+    res.json({});
+  } else {
+    db.Goals.findAll({
+      where: {
+        UserID: req.params.id,
+        longterm: 0
+      }
+    }).then(dbGoals => {
+      res.json(dbGoals);
+    });
+  }
+});
+
+router.get("/api/goals/:goal/:id", (req, res) => {
+  if (!req.user) {
+    res.json({});
+  } else {
+    db.Goals.findAll({
+      where: {
+        UserID: req.params.id,
+        goalDes: req.params.goal
+      }
+    }).then(dbGoals => {
+      res.json(dbGoals);
+    });
+  }
+});
+
 router.get("/api/user_data", (req, res) => {
   if (!req.user) {
     res.json({});
