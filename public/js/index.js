@@ -52,7 +52,7 @@ function renderGoals(date) {
     );
     $("#goal-list").append(item);
   }
-  $(".delete-goal").unbind().on("click", function(e) {
+  $(".delete-goal").unbind().on("click", function (e) {
     e.stopPropagation()
     const name = $(this).data("name");
     $.ajax({
@@ -109,21 +109,21 @@ $("#goal-submit").on("click", () => {
     for (let i = 0; i < dates.length; i++) {
       const date = dates[i];
       postGoal(longTerm, date);
-    } 
+    }
   }
 });
 
-const getDates = function(startDate, endDate) {
+const getDates = function (startDate, endDate) {
   startDate = (`${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}`);
   endDate = (`${endDate.getMonth() + 1}/${endDate.getDate() + 1}/${endDate.getFullYear()}`);
   let dates = [],
-      currentDate = startDate,
-      addDays = function(days) {
-        let date = new Date(this.valueOf());
-        date.setDate(date.getDate() + days);
-        date = (`${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`);
-        return date;
-      };
+    currentDate = startDate,
+    addDays = function (days) {
+      let date = new Date(this.valueOf());
+      date.setDate(date.getDate() + days);
+      date = (`${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`);
+      return date;
+    };
   while (currentDate <= endDate) {
     dates.push(currentDate);
     currentDate = addDays.call(currentDate, 1);
@@ -159,7 +159,7 @@ $("#longTerm").on("click", () => {
   $("#end-date").prop("disabled", true);
 });
 
-$(document).on("click", ".check", function() {
+$(document).on("click", ".check", function () {
   const id = $(this).data("id");
   const bool = $(this).prop("checked");
   $.ajax({
@@ -180,3 +180,60 @@ $(document).on("click", ".check", function() {
 //   }
 //   console.log(shortTermGoals);
 // }
+
+function getShortTerm() {
+  $("#goal-list").html("");
+  $.get(`/api/goals/${userid}`).then(data => {
+
+    // Each goal should get it's own array
+    condition = [];
+    for (let i = 0; i < data.length; i++) {
+      const status = data[i];
+      condition.push({
+        desc: status.goalDes,
+        date: status.date,
+      });
+    };
+    console.log(condition[1]);
+    console.log(condition[2]);
+
+    // Percentage
+
+    // Progress bar goal array
+    let goals = [];
+    let colors = [];
+    for (let i = 0; i < data.length; i++) {
+      let goal = data[i].goalDes;
+      let color = data[i].color;
+      colors.push(color);
+      goals.push(goal);
+
+    }
+    let listGoals = [...new Set(goals)]
+    let listColors = [...new Set(colors)]
+    console.log(listGoals);
+    console.log(listColors);
+
+    // Progress Bars
+    for (let i = 0; i < listGoals.length; i++) {
+
+      const progList = $("<li>");
+      const progBar = $("<div>");
+      const progDiv = $("<div>");
+      const hr = $("<hr>");
+
+      $("#progress").append(progList);
+      progList.text(listGoals[i]).append(progBar).append(hr);
+      progBar.attr("class", "progress").append(progDiv);
+      progDiv.attr("class", "progress-bar-" + listColors[i])
+        .attr("role", "progressbar")
+        .attr("style", "width: 50%")
+        .attr("aria-valuenow", "0")
+        .attr("aria-valuemin", "0")
+        .attr("aria-valuemax", "100")
+    };
+  });
+};
+
+
+
