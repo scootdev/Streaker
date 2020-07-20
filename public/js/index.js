@@ -1,5 +1,6 @@
 let userid = 0;
 const userGoals = [];
+let shortTermGoals;
 
 $("#calendar").evoCalendar({
   eventDisplayDefault: false,
@@ -29,7 +30,7 @@ $.get("/api/user_data").then(data => {
 });
 
 function renderGoals(date) {
-  const goalList = [];
+  let goalList = [];
   $("#goal-list").html("");
   for (let i = 0; i < userGoals.length; i++) {
     const goal = userGoals[i];
@@ -51,18 +52,14 @@ function renderGoals(date) {
     );
     $("#goal-list").append(item);
   }
-
-  $(".delete-goal")
-    .unbind()
-    .on("click", function(e) {
-      e.stopPropagation();
-      const name = $(this).data("name");
-      $.ajax({
-        url: `/api/goals/${name}/${userid}`,
-        method: "DELETE"
-      }).then(location.reload());
-    });
-
+  $(".delete-goal").unbind().on("click", function (e) {
+    e.stopPropagation()
+    const name = $(this).data("name");
+    $.ajax({
+      url: `/api/goals/${name}/${userid}`,
+      method: "DELETE"
+    }).then(location.reload());
+  })
 }
 
 function updateGoals() {
@@ -116,19 +113,15 @@ $("#goal-submit").on("click", () => {
   }
 });
 
-
-const getDates = function(startDate, endDate) {
-  startDate = `${startDate.getMonth() +
-    1}/${startDate.getDate()}/${startDate.getFullYear()}`;
-  endDate = `${endDate.getMonth() + 1}/${endDate.getDate() +
-    1}/${endDate.getFullYear()}`;
-  const dates = [],
+const getDates = function (startDate, endDate) {
+  startDate = (`${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}`);
+  endDate = (`${endDate.getMonth() + 1}/${endDate.getDate() + 1}/${endDate.getFullYear()}`);
+  let dates = [],
     currentDate = startDate,
-    addDays = function(days) {
+    addDays = function (days) {
       let date = new Date(this.valueOf());
       date.setDate(date.getDate() + days);
-      date = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-
+      date = (`${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`);
       return date;
     };
   while (currentDate <= endDate) {
@@ -172,7 +165,8 @@ $(document).on("click", ".check", function () {
   $.ajax({
     url: `/api/goals/${id}/${bool}`,
     method: "PUT"
-  });
+  })
+  location.reload();
 });
 
 // function getShortTerm() {
@@ -189,7 +183,7 @@ $(document).on("click", ".check", function () {
 // }
 
 function getShortTerm() {
-  $.get(`/api/goals/${userid}`).then(data => {
+  $.get(`/api/goals/${userid}/shortterm`).then(data => {
 
     const currentDay = moment().format('MM/DD/YYYY')
     console.log(currentDay)
@@ -221,53 +215,48 @@ function getShortTerm() {
         green++;
     };
 
-    console.log(red)
-    // console.log(100 / red)
-    // console.log(100 / green)
-
-    // let redPerDay = 100 / red;
-    // let greenPerDay = 100 / green;
-
     // Progress Bars
     for (let i = 0; i < listGoals.length; i++) {
+      let days = 0;
+      let completed = 0;
+      const goal = listGoals[i];
+      $.get(`/api/goals/${goal}/${userid}`).then(data => {
+        for (let i = 0; i < data.length; i++) {
+          const goal = data[i];
+          days++
+          if (goal.completed) {
+            completed++
+          };
+        }
 
-      // let percent = "";
-      // let red = 0;
-      // let green = 0;
-      // let blue = 0;
-      // colors.forEach((color) => {
-      //   // console.log(color)
-      //   red++;
-      //   green++;
-      //   blue++;
-      // });
-      // console.log(red);
-      // console.log(green);
-      // let redPercent = (100 / red);
-      // let greenPercent = (100 / green);
+        const percentage = parseInt((completed / days) * 100, 10);
+        const progList = $("<li>");
+        const progBar = $("<div>");
+        const progDiv = $("<div>");
+        const hr = $("<hr>");
+        $("#progress").append(progList);
+        progList.text(listGoals[i]).append(progBar).append(hr);
+        progBar.attr("class", "progress").append(progDiv);
+        progDiv.attr("class", "progress-bar-striped progress-bar-animated progress-bar-" + listColors[i])
+          .attr("role", "progressbar")
+          // .attr("style", "width: 25%")
+          .attr("style", "width:" + percentage + "%")
+          .attr("aria-valuenow", "0")
+          .attr("aria-valuemin", "0")
+          .attr("aria-valuemax", "100")
+          .attr("color", listColors[i])
+          .attr("date", currentDay);
+      })
 
-      const progList = $("<li>");
-      const progBar = $("<div>");
-      const progDiv = $("<div>");
-      const hr = $("<hr>");
+
+
 
       // if (listColors[i] === "red") {
       //   console.log("ok");
       //   progDiv.attr("style", "width:" + redPercent + "%")
       // }
 
-      $("#progress").append(progList);
-      progList.text(listGoals[i]).append(progBar).append(hr);
-      progBar.attr("class", "progress").append(progDiv);
-      progDiv.attr("class", "progress-bar-striped progress-bar-animated progress-bar-" + listColors[i])
-        .attr("role", "progressbar")
-        .attr("style", "width: 25%")
-        // .attr("style", "width:" + percent + "%")
-        .attr("aria-valuenow", "0")
-        .attr("aria-valuemin", "0")
-        .attr("aria-valuemax", "100")
-        .attr("color", listColors[i])
-        .attr("date", currentDay);
+
 
       // let onred = $(":red")
       // if (onred = "red") {
