@@ -1,6 +1,10 @@
 # Planner-app
 
-- 
+An APP, that takes user input for goal (description) and dates, which marks it on the calendar. 
+
+During the APP operation, user input is stored in a database.
+
+Checkboxes are used for marking the goal, and updates a goal tracker bar.
 
 # Table of Contents
 1. [User Story](#user-story)
