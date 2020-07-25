@@ -48,7 +48,9 @@ function renderGoals(date) {
     }
     const item = $(
       `<li class="list-group-item"><input class="check" type="checkbox" data-id="${goal.id}" ${checked} /> ${goal.name} <button class="float-right btn delete-goal" data-id="${goal.id}" data-name="${goal.name}"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button></li>`
-    );
+    ).data("goal", goalList[i]);
+    console.log(goalList[i]);
+    console.log(goalList);
     $("#goal-list").append(item);
   }
   $(".delete-goal")
