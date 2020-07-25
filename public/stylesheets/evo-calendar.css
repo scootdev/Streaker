@@ -422,6 +422,38 @@ tr.calendar-body .calendar-day .day[disabled] {
     background-color: #3ca8ff;
 }
 
+.event-container > .event-icon > div.event-bullet-green,
+.event-indicator > .type-bullet > div.type-green {
+    background-color: #2dc851;
+}
+
+.event-container > .event-icon > div.event-bullet-red,
+.event-indicator > .type-bullet > div.type-red {
+    background-color: #f74052;
+}
+
+.event-container > .event-icon > div.event-bullet-yellow,
+.event-indicator > .type-bullet > div.type-yellow {
+    background-color: #f2c745;
+}
+
+.event-container > .event-icon > div.event-bullet-blue,
+.event-indicator > .type-bullet > div.type-blue {
+    background-color: #66ddf5;
+}
+
+.event-container > .event-icon > div.event-bullet-black,
+.event-indicator > .type-bullet > div.type-black {
+    background-color: #343a40;
+}
+
+.event-container > .event-icon > div.event-bullet-grey,
+.event-indicator > .type-bullet > div.type-grey {
+    background-color: #868e96;
+}
+
+
+
 
 button.icon-button {
     border: none;
@@ -473,7 +505,6 @@ button.icon-button > span.chevron-arrow-right {
         -ms-transform: rotate(-45deg);
             transform: rotate(-45deg);
 }
-
 
 /*************
 **  THEMES  **

@@ -44,3 +44,35 @@ h2 {
     width: 50%;
     text-align: center;
 }
+button.delete-goal {
+    color:#8773c1;
+}
+#goal-submit {
+    box-shadow: 0 5px 15px -5px #8773c1;
+}
+h1 {
+    color:#464545;
+}
+h4,h5 {
+    color:#302f2f;
+}
+
+.progress-bar-green {
+      background-color:#28a745 !important;
+}
+.progress-bar-red {
+      background-color: #dc354e !important;
+}
+.progress-bar-yellow {
+    background-color: #ffc107 !important;
+}
+.progress-bar-blue {
+    background-color: #17a2b8 !important;
+}
+.progress-bar-black {
+    background-color: #343a40 !important;
+    color: white;
+}
+.progress-bar-grey {
+    background-color: #6c757d !important;
+}

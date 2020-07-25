@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   res.render("login");
 });
 
-// GET singup or calendar if logged in
+// GET signup or calendar if logged in
 router.get("/signup", (req, res) => {
   if (req.user) {
     res.render("calendar");
@@ -49,24 +49,6 @@ router.post("/api/signup", (req, res) => {
     });
 });
 
-// GET logout
-router.post("/api/short-term-goal", (req, res) => {
-  // db.User.create({
-  //   email: req.body.email,
-  //   password: req.body.password
-  // })
-  //   .then(() => {
-  //     res.redirect(307, "/api/login");
-  //   })
-  //   .catch(err => {
-  //     res.status(401).json(err);
-  //   });
-  res.json({}); // Network request piece
-  console.log("Short-Term-Goal end point called");
-  console.log(req);
-  // console.log(JSON.stringify(req));
-});
-
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
@@ -79,6 +61,36 @@ router.get("/api/goals/:id", (req, res) => {
     db.Goals.findAll({
       where: {
         UserID: req.params.id
+      }
+    }).then(dbGoals => {
+      res.json(dbGoals);
+    });
+  }
+});
+
+router.get("/api/goals/:id/shortterm", (req, res) => {
+  if (!req.user) {
+    res.json({});
+  } else {
+    db.Goals.findAll({
+      where: {
+        UserID: req.params.id,
+        longterm: 0
+      }
+    }).then(dbGoals => {
+      res.json(dbGoals);
+    });
+  }
+});
+
+router.get("/api/goals/:goal/:id", (req, res) => {
+  if (!req.user) {
+    res.json({});
+  } else {
+    db.Goals.findAll({
+      where: {
+        UserID: req.params.id,
+        goalDes: req.params.goal
       }
     }).then(dbGoals => {
       res.json(dbGoals);
@@ -117,24 +129,30 @@ router.post("/api/goals", isAuthenticated, (req, res) => {
   });
 });
 
-// GET days completed
-router.get("/api/days_completed", (req, res) => {
+router.delete("/api/goals/:name/:userid", (req, res) => {
   if (!req.user) {
     res.json({});
   } else {
-    db.Days.findAll({
-      include: [db.Goals]
-    }).then(dbDays => {
-      res.json(dbDays);
+    db.Goals.destroy({
+      where: {
+        goalDes: req.params.name,
+        UserId: req.params.userid
+      }
+    }).then(dbGoals => {
+      res.json(dbGoals);
     });
   }
 });
 
-// POST days completed
-router.post("/api/days_completed", isAuthenticated, (req, res) => {
-  db.Days.create(req.body).then(data => {
-    res.json(data);
-  });
+router.put("/api/goals/:id/:bool", req => {
+  db.Goals.update(
+    { completed: req.params.bool },
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  );
 });
 
 module.exports = router;
