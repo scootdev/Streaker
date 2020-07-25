@@ -40,8 +40,10 @@ function renderGoals(date) {
   for (let i = 0; i < goalList.length; i++) {
     const goal = goalList[i];
     const item = $(
-      `<li class="list-group-item"><input type="checkbox" /> ${goal.name} </li>`
-    );
+      `<li class="list-group-item"><input class="check" type="checkbox" /> ${goal.name} </li>`
+    ).data("goal", goalList[i]);
+    console.log(goalList[i]);
+    console.log(goalList);
     $("#goal-list").append(item);
   }
 }
@@ -112,6 +114,12 @@ $("#shortTerm").on("click", () => {
 
 $("#longTerm").on("click", () => {
   $("#end-date").prop("disabled", true);
+});
+
+// Testing purposes // Event delegation // Needs to recognize the .check class
+$(document).on("click", ".check", () => {
+  console.log("Hello World");
+  console.log($(this).data());
 });
 
 reformatDate("2020-07-23");
