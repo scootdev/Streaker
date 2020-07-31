@@ -1,5 +1,4 @@
-# Planner-app
-
+# Streaker
 An APP, that takes user input for goal (description) and dates, which marks it on the calendar.
 
 During the APP operation, user input is stored in a database.
